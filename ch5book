@@ -1,0 +1,57 @@
+/******** Chapter 5*************/
+Data CORR_EG;
+	INPUT GENDER $ HEIGHT WEIGHT AGE;
+DATALINES;
+M 68 155 23
+F 61 99 20
+F 63 115 21
+M 70 205 45
+M 69 170 .
+F 65 125 30
+M 72 220 48
+;
+PROC CORR DATA=CORR_EG;
+	TITLE “Example of a Correlation Matrix”;
+	VAR HEIGHT WEIGHT AGE;
+RUN;
+
+/* This program tests the correlation between height:weight, weight:Age, and height:age and returns the pearson coefficient with a value between -1 and 1.  A Zero means no correlation, A 1 means positive correlation, and a -1 means negative correlations*/
+/* This is the generalized syntax of the above function
+PROC CORR options;
+	VAR List-of-variables;
+RUN;
+Also, non parametric options, if you use any of these, you have to specify PEARSON to get pearson coefficient
+SPEARMAN 
+KENDALL
+HOEFFDING
+NOSIMPLE - If you don’t want simple stats, 
+
+
+*/
+/*When all you want is a subset of the total variables*/
+PROC CORR DATA=RESULTS;
+	VAR IQ GPA;
+	WITH TEST1~TEST10;
+RUN;
+
+/* Example of a Partial from book*/
+PROC CORR DATA=CORR_EG NOSIMPLE;
+	TITLE “Example of a Partial Correlation”;
+	VAR HEIGHT WEIGHT;
+	PARTIAL AGE;
+RUN;
+
+/* General Form of the Linear Regression
+
+PROC REG options;
+MODEL dependent variable(s) = independent-variables / options;
+RUN;
+*/
+PROC REG DATA= CORR_EG;
+	TITLE “Regression Line for Height-Weight Data”;
+	MODEL WEIGHT = HEIGHT;
+RUN;
+/* /
+
+
+

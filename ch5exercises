@@ -12,7 +12,7 @@ DATALINES;
 4  7  10
 ;
 PROC CORR DATA=five_one;
-	TITLE “Problem 5.1A Correlation Matrix X&Y, X&Z”;
+	TITLE "Problem 5.1A Correlation Matrix X&Y, X&Z";
 	VAR Y Z;
 	WITH X;
 RUN;

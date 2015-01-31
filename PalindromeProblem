@@ -1,0 +1,22 @@
+/*     */
+/*     */
+/*     */
+
+
+DATA LargePalin;
+  INPUT A
+        B
+DATALINES;
+999 999
+;
+
+
+
+
+
+%macro paldindrome( num );
+  %global pnum;
+  %let pnum = input(reverse(put(num,32.)),32.);
+  %put &pnum;  
+%mend palindrome;
+

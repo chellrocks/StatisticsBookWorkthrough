@@ -1,0 +1,3 @@
+DATA MANY;
+  INPUT X1-X5 Y1-Y5;
+  

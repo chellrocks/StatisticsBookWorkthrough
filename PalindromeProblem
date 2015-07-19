@@ -1,22 +1,20 @@
-/*     */
-/*     */
-/*     */
+*add library Tclk
+a= 999
+b= 999
+c=0
+pnum=0
+for (m in 1:100){
+  for(n in 1:10){
+    c=a*b
+    pnum = as.numeric(as.character(tcl("string","reverse",format(c))))
+    if(c != pnum){b = b-1} else{
+    print(n)
+    print(a)
+    print(b)
+    }
+  a=a-1
+  b=999
+}
 
 
-DATA LargePalin;
-  INPUT A
-        B
-DATALINES;
-999 999
-;
-
-
-
-
-
-%macro paldindrome( num );
-  %global pnum;
-  %let pnum = input(reverse(put(num,32.)),32.);
-  %put &pnum;  
-%mend palindrome;
-
+*returns correct value of 913 and 993
